@@ -1,4 +1,4 @@
-ARG RUBY_VERSION=2.6.5
+ARG RUBY_VERSION=2.6.6
 
 FROM ruby:${RUBY_VERSION}-alpine3.11
 
@@ -29,7 +29,7 @@ ENV BUNDLE_APP_CONFIG=$BUNDLE_PATH \
 ENV PATH /app/bin:$BUNDLE_BIN:$PATH
 
 # install bundler in specific version
-ARG BUNDLER_VERSION=2.0.2
+ARG BUNDLER_VERSION=2.1.4
 
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler -v ${BUNDLER_VERSION} && \
