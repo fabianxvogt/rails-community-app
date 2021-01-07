@@ -120,6 +120,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Reducing the output per request to a single line with all the important information
+  config.lograge.enabled = true
+
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
