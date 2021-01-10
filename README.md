@@ -203,10 +203,17 @@ register number
 heroku config:set IDENTIFICATION_NUMBER=<'<b>District Court Charlottenburg:</b> XY ##### Z'>
 ```
 
-And finally, add a phone number of your organization:
+Add a phone number of your organization:
 
 ```bash
 heroku config:set PHONE_NUMBER_OF_THE_ORGANIZATION=<'010 20 345 6789'>
+```
+
+And finally, add a membership application url:
+
+```bash
+heroku config:set MEMBERSHIP_APPLICATION_URL=<'membership application url'>
+
 ```
 
 ### Contact mailer

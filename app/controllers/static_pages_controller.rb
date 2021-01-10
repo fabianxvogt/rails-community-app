@@ -15,11 +15,4 @@ class StaticPagesController < ApplicationController
   def about; end
 
   def imprint; end
-
-  def membership_application
-    send_file(
-      Rails.root.join("public", "sifez-aufnahmeantrag.pdf"),
-      type: "application/pdf"
-    )
-  end
 end

@@ -39,11 +39,11 @@ class StaticPagesControllerTest < ActionDispatch::IntegrationTest
     assert_select "title", "All users | #{@base_title}"
   end
 
-  test "should get membership application pdf" do
-    get membership_application_path
-    assert_response :success
-    assert_equal "application/pdf", response.content_type
-    assert_equal 'attachment; filename="sifez-aufnahmeantrag.pdf"; filename*=UTF-8\'\'sifez-aufnahmeantrag.pdf',
-                 response.headers["Content-Disposition"]
+  test "should get membership application link" do
+    get root_path
+    assert_select "a[href=?]", membership_application_url,
+      text: I18n.t("community.about_membership_application_link_html",
+        community_name: I18n.t("community.name"))
+    assert_select "a[href=?]", membership_application_url, target: "_blank"
   end
 end

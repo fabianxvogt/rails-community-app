@@ -6,7 +6,7 @@
 			community_name: t('community.name'),
 			membership_application_url: link_to(t('community.about_membership_application_link_html',
 				community_name: t('community.name')),
-				membership_application_path))
+				membership_application_url, target: "_blank", rel: "nofollow noopener"))
 	h2
 		= t('community.about_fee') + '*'
 	table#admission_fee.table

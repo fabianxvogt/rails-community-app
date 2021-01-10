@@ -8,7 +8,6 @@ Rails.application.routes.draw do
 
     get     '/posts',     to: 'static_pages#home'
     get     '/feed',      to: 'static_pages#home'
-    get     '/membership_application', to: 'static_pages#membership_application'
     get     '/about',     to: 'static_pages#about'
     get     '/imprint',   to: 'static_pages#imprint'
 
@@ -35,5 +34,9 @@ Rails.application.routes.draw do
     resources :relationships,       only: %i[create destroy]
 
     root 'static_pages#home'
+  end
+
+  direct :membership_application do
+    ENV['MEMBERSHIP_APPLICATION_URL']
   end
 end

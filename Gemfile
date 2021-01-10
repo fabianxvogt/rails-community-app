@@ -35,7 +35,7 @@ gem "jbuilder", "~> 2.9", ">= 2.9.1"
 
 # Logging
 # Tame Rails' multi-line logging into a single line per request
-gem 'lograge', '~> 0.11.2'
+gem "lograge", "~> 0.11.2"
 
 # Caching
 # Reduces boot times through caching; required in config/boot.rb
