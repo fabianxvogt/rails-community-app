@@ -171,6 +171,9 @@ Add it to community app as follows:
 heroku addons:create sendgrid:starter
 ```
 
+Obtain an API key, from SendGrid add-on you will find on your Heroku dashboard, by
+[Create API Key](https://devcenter.heroku.com/articles/sendgrid#obtaining-an-api-key) with `Mail Send` full access permission and [Setup API key environment variable](https://devcenter.heroku.com/articles/sendgrid#setup-api-key-environment-variable).
+
 #### Define a host variable
 
 You will also have to define a **host** variable with the address of your
