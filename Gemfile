@@ -17,7 +17,7 @@ gem "barnes"
 # Use SCSS for stylesheets
 gem "sass-rails", ">= 6"
 # Webpacker is the default JavaScript compiler for Rails 6
-gem "webpacker", "~> 4.0"
+gem "webpacker", "~> 5.2", ">= 5.2.1"
 # Use CoffeeScript for .coffee assets and views
 gem "coffee-rails", "~> 5.0"
 
