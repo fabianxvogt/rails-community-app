@@ -10,7 +10,7 @@ services:
       args:
         RUBY_VERSION: ${RUBY_VERSION:-2.6.6}
         BUNDLER_VERSION: 2.1.4
-        NODE_VERSION: ${NODE_VERSION:-12.15.0-r1}
+        NODE_VERSION: ${NODE_VERSION:-12.20.1-r0}
         YARN_VERSION: ${YARN_VERSION:-1.19.2-r0}
     volumes:
       - .:/app:cached
