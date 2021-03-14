@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "node": "~12.21",
+    "yarn": "~1.19"
+  },
   "name": "community-app",
   "private": true,
   "dependencies": {
