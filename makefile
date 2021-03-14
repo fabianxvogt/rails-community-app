@@ -1,68 +1,75 @@
-dc=docker-compose -f docker-compose.yml $(1)
-dc-run=$(call dc, run --rm web $(1))
-dc-exec=$(call dc, exec $(1) $(2))
+dc          = docker-compose$(1)$(2)
+dc-run      = $(call dc, run --rm web$(1)$(2))
+dc-run-test = $(call dc, run --rm test$(1)$(2))
+dc-exec     = $(call dc, exec$(1)$(2))
+args        = $(shell arg="$(filter-out $@,$(MAKECMDGOALS))" && echo $${arg:-${1}})
+
+.ONESHELL:
+.DEFAULT_GOAL := usage
 
 usage:
-	@echo "Available targets:"
-	@echo "  * up           		  - Runs the development server"
-	@echo "  * sh-web       		  - Fires a sh shell inside your container"
-	@echo "  * restart      		  - Restart the development server"
-	@echo "  * rebuild      		  - Rebuild all containers and restart the development server"
-	@echo "  * stop         		  - Stops the server"
-	@echo "  * down         		  - Removes all the containers and tears down the setup"
-	@echo "  * bundle       		  - Install missing gems"
-	@echo "  * console      		  - Runs rails console"
-	@echo "  * db-migrate   		  - Runs the migrations for dev database"
-	@echo "  * db-seed      		  - Seeds the database"
-	@echo "  * logs         		  - Displays logs of all containers"
-	@echo "  * logs-web     		  - Displays logs of web application"
-	@echo "  * test         		  - Runs tests"
-	@echo "  * test-coverage		  - Runs tests with coverage"
+	@grep -E '^[a-zA-Z0-9_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+  | column -t  -s '##'
+
+# Setup with DB
+setup: ## Initiates everything (builds images, installs gems, creats and migrats db)
+	make build
+	make db-create
+	make db-migrate
+build: ## Builds the image
+	make rm-app-volumes
+	docker build --ssh default -t community_app:0.0.1 .
 
 # docker-compose
-up:
-	$(call dc, up -d web)
-sh-web:
-	$(call dc-exec, web, sh)
-restart: stop up
-rebuild: down up
-stop:
-	$(call dc, stop)
-down:
+up: ## Builds and runs the development server or runs service given via argument
+	$(call dc, up -d $(if $(args),$(args),web) )
+rebuild: ## Rebuilds and restarts the development server (alias for 'make build up')
+	make build
+	make up
+sh: ## Fires a shell inside a service that was passed via argument (default: web)
+	$(call dc-exec, $(if $(args),$(args),web), sh)
+restart: ## Restarts a service that was passed via argument (default: development server)
+	$(call dc, restart $(if $(args),$(args),web webpacker))
+rm-app-volumes: ## Stops the development server and removes bundle and node modules data volumes
+	make stop
+	$(call dc, rm -f web webpacker)
+	docker volume rm -f community-app_bundle_data community-app_node_modules_data
+stop: ## Stops all services given via argument (default: development server)
+	$(call dc, stop $(if $(args),$(args),web webpacker))
+down: ## Removes all containers and tears down the setup
 	$(call dc, down --remove-orphans)
 
 # Rails
-bundle:
-	$(call dc-run, bundle install)
-console:
-	$(call dc-run, rails console)
-console-sandbox:
-	$(call dc-run, rails console --sandbox)
-rails-cache-clear:
+bundle: ## Installs missing gems or deal with gem given via argument
+	$(call dc-run, bundle, $(args))
+yarn: ## Installs missing node modules or deal with module given via argument
+	$(call dc-run, yarn, $(args))
+rails: ## Runs rails command (with arguments, default: --tasks)
+	$(call dc-run, rails, $(if $(args),$(args),--tasks))
+console: ## Runs rails console (add 'sandbox' as an argument to start it in sandbox mode)
+	$(call dc-run, rails console, --$(args))
+rails-cache-clear: ## Runs rails command and cleans rails cache
 	$(call dc-run, rails r 'Rails.cache.clear')
-guard:
-	$(call dc-run, guard)
+rake: ## Runs rake task (with arguments, default: --tasks)
+	$(call dc-run, rake, $(if $(args),$(args),--tasks))
+tmp-clear: ## Clear all files from tmp
+	$(call dc-run, rails tmp:clear)
 
 # Database
-db-create:
-	$(call dc, up -d postgres)
+db-create: ## Creates the dev and test database
 	$(call dc-run, rails db:create)
-db-migrate:
+db-migrate: ## Runs the migrations for dev database
 	$(call dc-run, rails db:migrate)
-db-seed:
-	$(call dc-run, rails db:seed)
-db-drop:
-	$(call dc-run, rails db:drop)
 
 # logs
-logs:
-	$(call dc, logs -tf)
-logs-web:
-	$(call dc, logs -tf web)
+logs: ## Displays logs of all services or service given via argument
+	$(call dc, logs -tf --tail=20, $(args))
+log-clear: ## Truncates all *.log files in log/ to zero bytes
+	$(call dc-run, rails log:clear)
 
 # Tests
 .PHONY: test
-test:
-	$(call dc-run, rails test)
-test-coverage:
-	$(call dc-run, rails test COVERAGE=true)
+test: ## Runs all tests or tests given via argument
+	$(call dc-run-test, rails test, $(args))
+test-coverage: ## Runs all tests with coverage
+	$(call dc-run-test, rails test COVERAGE=true)
