@@ -29,7 +29,6 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler:${BUNDLER_VERSION} && \
-    bundle config --global frozen 1 && \
     bundle install -j $(nproc) --retry 3 --without production
 
 RUN yarn config set "strict-ssl" false
