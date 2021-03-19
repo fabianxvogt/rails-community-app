@@ -115,13 +115,15 @@ gem "honeypot-captcha"
 # A rack middleware for throttling and blocking abusive requests
 gem "rack-attack", "~> 5.4", ">= 5.4.2"
 
+# Tools
+# Pretty print your Ruby objects with style -- in full color and with proper indentation. Use with 'ap object'
+gem "awesome_print", "~> 1.9", ">= 1.9.2"
+
 group :development, :test do
   # Pry is a powerful alternative to the standard IRB shell for Ruby
   gem "pry-rails"
   # Step-by-step debugging and stack navigation in Pry
   gem "pry-byebug", platform: :ruby
-  # Pretty print your Ruby objects with style -- in full color and with proper indentation. Use with 'ap object'
-  gem "awesome_print"
   # Use for fighting the N+1 problem in Ruby
   gem "bullet"
   # Shim to load environment variables from .env into ENV
