@@ -1,10 +1,15 @@
 const { environment } = require('@rails/webpacker')
 
+// Make $ available on the window object
+// for SJR views and jQuery plugins
+// that may expect `$` to be globally available.
 const webpack = require('webpack')
-environment.plugins.prepend('Provide',
+environment.plugins.append('Provide',
   new webpack.ProvidePlugin({
-    $: 'jquery/src/jquery',
-    jQuery: 'jquery/src/jquery'
+    $: 'jquery',
+    jQuery: 'jquery',
+    'window.jQuery': 'jquery',
+    Popper: ['popper.js', 'default']
   })
 )
 
