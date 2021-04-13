@@ -7,7 +7,7 @@ LABEL maintainer="Viktor Schmidt <viktorianer4life@gmail.com>"
 # install bundler in specific version
 ARG BUNDLER_VERSION=2.1.4
 # install node in specific version
-ARG NODE_VERSION=12.21
+ARG NODE_VERSION=12.22
 # install yarn in specific version
 ARG YARN_VERSION=1.19
 # install postgresql in specific version
@@ -29,7 +29,7 @@ WORKDIR /app
 
 COPY Gemfile Gemfile.lock ./
 RUN gem install bundler:${BUNDLER_VERSION} && \
-    bundle install -j $(nproc) --retry 3 --without production
+    bundle install -j $(nproc) --retry 3
 
 RUN yarn config set "strict-ssl" false
 COPY package.json yarn.lock ./

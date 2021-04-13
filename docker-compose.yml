@@ -16,7 +16,7 @@ services:
       args:
         RUBY_VERSION: ${RUBY_VERSION:-2.6.6}
         BUNDLER_VERSION: ${BUNDLER_VERSION:-2.1.4}
-        NODE_VERSION: ${NODE_VERSION:-12.21}
+        NODE_VERSION: ${NODE_VERSION:-12.22}
         YARN_VERSION: ${YARN_VERSION:-1.19}
         POSTGRES_VERSION: ${postgres_version:-12.6}
     stdin_open: true

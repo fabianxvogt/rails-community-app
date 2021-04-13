@@ -1,6 +1,6 @@
 {
   "engines": {
-    "node": "~12.21",
+    "node": "~12.22",
     "yarn": "~1.19"
   },
   "name": "community-app",
