@@ -121,47 +121,6 @@ table {
 
 /* flash */
 
-div .gritter-item {
-  color: inherit;
-  padding: 0;
-  font-size: inherit;
-  font-family: inherit;
-  filter: inherit; // ie8 fix
-
-  &.gritter-css3 {
-    background: inherit;
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
-    border-radius: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-
-    .gritter-title {
-      font-size: 1.3em;
-      text-shadow: none;
-    }
-
-    .gritter-with-image,
-    .gritter-without-image {
-      padding: 0;
-    }
-
-    .gritter-image {
-      width: 24px;
-      height: 24px;
-    }
-
-    .gritter-close {
-      background: asset-url('gritter-close.png') no-repeat;
-      left: 90%;
-    }
-  }
-}
-
-div :hover .gritter-item.gritter-css3 {
-  padding: 0;
-  border: none;
-}
 
 /* page jumbotron */
 

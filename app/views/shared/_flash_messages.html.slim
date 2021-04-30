@@ -1,8 +1,3 @@
 #flash
   - flash.each do |message_type, message|
-    = js add_gritter message, 
-			class_name: "alert alert-#{message_type}", 
-			title: t("gflash.titles.#{message_type}"), 
-			image: message_type, 
-			fade_in_speed: 'medium', 
-			fade_out_speed: '1000'
+    div class=("alert alert-#{message_type}") = message

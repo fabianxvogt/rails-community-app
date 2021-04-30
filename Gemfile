@@ -52,9 +52,6 @@ gem "connection_pool"
 gem "slim-rails"
 # Use Twitter Bootstrap 4 for stylesheets
 gem "bootstrap", "~> 4.4"
-# Use jquery as the JavaScript library.
-# Bootstrap 4 require jQuery, Popper.js, and our own JavaScript plugins.
-gem "jquery-rails"
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem "kaminari"
 # Bootstrap 4 styling for Kaminari
@@ -62,8 +59,6 @@ gem "bootstrap4-kaminari-views"
 
 # Provides the Font-Awesome web fonts and stylesheets as a Rails engine for use with the asset pipeline.
 gem "font-awesome-rails"
-# Easily add Growl-like notifications
-gem "gritter", "~> 1.2"
 
 # Use Faker to easily generate fake data: names, addresses, phone numbers, etc.
 gem "faker", "~> 2.8"
