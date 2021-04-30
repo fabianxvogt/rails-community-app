@@ -51,8 +51,6 @@ gem "connection_pool"
 # Frontend
 # Slim allows you to write very minimal templates
 gem "slim-rails"
-# Use Twitter Bootstrap 4 for stylesheets
-gem "bootstrap", "~> 4.4"
 # A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for modern web app frameworks and ORMs
 gem "kaminari"
 # Bootstrap 4 styling for Kaminari

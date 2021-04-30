@@ -73,8 +73,6 @@ GEM
       redcarpet (~> 3.3)
       rinku (~> 1.7)
       tag_helper (~> 0.5)
-    autoprefixer-rails (10.2.4.0)
-      execjs
     awesome_print (1.9.2)
     barnes (0.0.9)
       multi_json (~> 1)
@@ -88,10 +86,6 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.7.4)
       msgpack (~> 1.0)
-    bootstrap (4.6.0)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
-      sassc-rails (>= 2.0.0)
     bootstrap4-kaminari-views (1.0.1)
       kaminari (>= 0.13)
       rails (>= 3.1)
@@ -342,7 +336,6 @@ GEM
       ast (~> 2.4.1)
     parslet (1.8.2)
     pg (1.2.3)
-    popper_js (1.16.0)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -582,7 +575,6 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.4.2)
-  bootstrap (~> 4.4)
   bootstrap4-kaminari-views
   brakeman
   bullet
@@ -656,4 +648,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.1.4
+   2.2.0

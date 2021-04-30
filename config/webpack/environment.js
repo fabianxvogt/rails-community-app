@@ -1,4 +1,5 @@
 const { environment } = require('@rails/webpacker')
+const erb = require('./loaders/erb')
 
 // Make $ available on the window object
 // for SJR views and jQuery plugins
@@ -13,4 +14,5 @@ environment.plugins.append('Provide',
   })
 )
 
+environment.loaders.prepend('erb', erb)
 module.exports = environment

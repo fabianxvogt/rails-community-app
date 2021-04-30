@@ -1,4 +1,4 @@
-@import "bootstrap";
+@import "~bootstrap/scss/bootstrap";
 
 /* mixins, variables, etc. */
 
@@ -20,7 +20,7 @@
 
 /* universal */
 
-body {
+body .container {
   padding-top: 80px;
 }
 
@@ -120,13 +120,6 @@ table {
 /* page header */
 
 /* flash */
-
-
-/* page jumbotron */
-
-div .community-page-image {
-  background: asset-url('fb-cover.jpg') no-repeat;
-}
 
 /* feed */
 
