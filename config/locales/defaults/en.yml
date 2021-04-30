@@ -208,8 +208,6 @@ en:
 
   # warning
   warning:
-    facebook:
-      no_connection: "No connection to Facebook client."
 
   # certain keys must be escaped
   success:

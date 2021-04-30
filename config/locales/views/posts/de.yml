@@ -2,7 +2,6 @@ de:
   # posts
   # page feed
   feed_header: "Nachrichten-Feed"
-  fb_feed_header: "Facebook-Feed"
 
   # create post
   compose_new_post: "Neuen Beitrag verfassen..."

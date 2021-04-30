@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-require "koala"
 require "auto_html"
 
 # Adds helper methods to be used in context of a post
@@ -33,26 +32,6 @@ module PostsHelper
     query.page(page).per(per_page)
   end
 
-  # Returns the feed of posts (including status updates) and links published by this page, or by others on this page.
-  # https://developers.facebook.com/docs/graph-api/reference/v3.2/page/feed#read
-  def fb_feed(limit = 3)
-    @fb_client ||= facebook_app_client
-    if @fb_client
-      @fb_client&.get_connection(ENV["FB_PAGE_ID"],
-                                 "feed",
-                                 limit: limit,
-                                 fields: PostsHelper::FB_POST_FIELDS,
-                                 locale: I18n.locale,
-                                 return_ssl_resources: true
-                                )
-    else
-      []
-    end
-  rescue Koala::Facebook::ClientError => e
-    Rails.logger.error e.message # TODO: need some failure handling
-    []
-  end
-
   # Returns a composition of filters that transforms input by passing the output
   # of one filter as input for the next filter in line.
   #
@@ -69,21 +48,4 @@ module PostsHelper
   def auto_format_html(text)
     simple_format format_pipeline.call(text)
   end
-
-  private
-    # Log in to facebook app and get app client with authentication
-    # https://github.com/arsduo/koala/wiki/Graph-API
-    def facebook_app_client
-      return unless Koala.config.app_id.present? && Koala.config.app_secret.present?
-
-      # application-access-tokens don't expire, but you can still get the hash with get_app_access_token_info
-      # https://github.com/arsduo/koala/wiki/OAuth#application-access-tokens
-      oauth = Koala::Facebook::OAuth.new
-      oauth_token = oauth&.get_app_access_token
-    rescue Koala::Facebook::OAuthTokenRequestError, Faraday::ConnectionFailed, SocketError => e
-      Rails.logger.error e.message # TODO: need some failure handling
-      nil
-    else
-      Koala::Facebook::API.new(oauth_token)
-    end
 end

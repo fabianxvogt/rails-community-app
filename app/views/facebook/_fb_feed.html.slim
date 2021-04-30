@@ -1,7 +1,0 @@
-#fb-feed.feed
-	- if @fb_feed&.any?
-		h2
-			= t('fb_feed_header')
-		.row.mb-2
-			- @fb_feed.each do |post|
-				= render 'facebook/fb_post', post: post

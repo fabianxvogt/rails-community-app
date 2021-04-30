@@ -363,44 +363,6 @@ set up in Rails credentials:
     verification: <your-tag-content>
 ```
 
-### Facebook page posts (optional)
-
-You can use Facebook App to get public posts from some certain public pages
-(e.g. facebook page of your community).
-After that, the most recent posts will be displayed under news feed of your
-community app.
-
-#### Facebook App setup
-
-Login to [Facebook for Developers](https://developers.facebook.com/apps/) and click
-"Add a New App" in order to create new Facebook App.
-Go to Facebook App Settings > Advanced > Security and
-switch "Require App Secret" to "Yes".
-
-#### Facebook App config vars setup
-
-Finally, use the Heroku config command
-to [setup config vars](https://devcenter.heroku.com/articles/config-vars)
-for Facebook page.
-
-```bash
-heroku config:set FB_PAGE_ID=<your-fb-page-id>
-```
-
-Also, setup `app_id` and `app_secret` for development, test and production
-environment in Rails credentials:
-
-```bash
-  fb:
-    app_id: <your-fb-app-id>
-    app_secret: <your-fb-app-secret>
-```
-
-You will find the Facebook App ID and Facebook App SECRET on
-your Facebook App Dashboard.
-Use [https://findmyfbid.com/](https://findmyfbid.com/) in order to find
-facebook page ID of your community.
-
 ### Change logo (brand) and generate favicon
 
 Replace **assets/images/logo.png** with a logo of your community.

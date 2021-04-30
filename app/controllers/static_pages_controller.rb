@@ -8,7 +8,6 @@ class StaticPagesController < ApplicationController
   def home
     @post = current_user.posts.build if can? :create, Post
     @feed = feed(params[:page])
-    @fb_feed = fb_feed
     @contact = Contact.new
   end
 

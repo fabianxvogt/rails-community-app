@@ -99,9 +99,6 @@ gem "http_accept_language", "~> 2.1"
 # Use rails-i18n to get default pluralization and transliteration rules
 gem "rails-i18n", "~> 6.0"
 
-# SDK for Facebook. It allows read/write access to the social graph
-gem "koala", "~> 3.0"
-
 # Security
 # ExceptionHandler replaces Rails' default error pages with dynamic views.
 gem "exception_handler", "~> 0.8"

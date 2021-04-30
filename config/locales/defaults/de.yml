@@ -208,8 +208,6 @@ de:
 
   # warning
   warning:
-    facebook:
-      no_connection: "Konnte keine Verbindung zum Facebook-Client herstellen."
 
   # certain keys must be escaped
   success:
