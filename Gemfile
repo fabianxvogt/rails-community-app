@@ -10,8 +10,9 @@ ruby "2.6.6"
 gem "rails", "~> 6.0.1"
 # Use Puma as the app server
 gem "puma", "~> 4.3"
-# Use postgreSQL for heroku
-gem "pg", ">= 0.20.0"
+# Pg is the Ruby interface to the {PostgreSQL RDBMS}[http://www.postgresql.org/].
+# It works with {PostgreSQL 9.2 and later}[http://www.postgresql.org/support/versioning/].
+gem "pg", "~> 1.2", ">= 1.2.3"
 # Ruby Language Metrics (https://devcenter.heroku.com/articles/language-runtime-metrics-ruby#getting-started)
 gem "barnes"
 # Use SCSS for stylesheets

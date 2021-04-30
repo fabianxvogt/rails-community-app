@@ -29,6 +29,7 @@ public/uploads
 # Ignore dev environment variables
 .env
 .idea/
+.vscode/
 .DS_Store
 /*.iml
 *.fsl
@@ -47,6 +48,11 @@ coverage
 /yarn-error.log
 yarn-debug.log*
 .yarn-integrity
-
+log
+doc
 .git
 .dockerignore
+.gitignore
+Dockerfile
+docker-compose.yml
+README.rdoc
