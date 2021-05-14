@@ -19,7 +19,7 @@ services:
         BUNDLER_VERSION: ${BUNDLER_VERSION:-2.2}
         NODE_VERSION: ${NODE_VERSION:-12.22}
         YARN_VERSION: ${YARN_VERSION:-1.19}
-        POSTGRES_VERSION: ${POSTGRES_VERSION:-12.6}
+        POSTGRES_VERSION: ${POSTGRES_VERSION:-12.7}
     stdin_open: true
     tty: true
     environment: &app-env

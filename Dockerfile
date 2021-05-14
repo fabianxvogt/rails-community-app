@@ -12,7 +12,7 @@ ARG NODE_VERSION=12.22
 # install yarn in specific version
 ARG YARN_VERSION=1.19
 # install postgresql in specific version
-ARG POSTGRES_VERSION=12.6
+ARG POSTGRES_VERSION=12.7
 
 RUN apk add --update --virtual \
     build-base \
