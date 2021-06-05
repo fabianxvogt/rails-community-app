@@ -59,7 +59,7 @@ services:
 
   webpacker:
     <<: *app
-    command: ./bin/webpack-dev-server
+    command: bundle exec ./bin/webpack-dev-server
     ports:
       - 3035:3035
     environment:
@@ -119,7 +119,7 @@ services:
 
   test:
     <<: *app
-    command: rails test
+    command: bundle exec rails test
     environment:
       <<: *default-tz
       RAILS_ENV: test

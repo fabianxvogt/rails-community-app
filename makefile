@@ -46,33 +46,33 @@ bundle: ## Installs missing gems or deal with gem given via argument
 yarn: ## Installs missing node modules or deal with module given via argument
 	$(call dc-run-rm, yarn, $(args))
 rails: ## Runs rails command (with arguments, default: --tasks)
-	$(call dc-run-rm, rails, $(if $(args),$(args),--tasks))
+	$(call dc-run-rm, bundle exec rails, $(if $(args),$(args),--tasks))
 console: ## Runs rails console (add 'sandbox' as an argument to start it in sandbox mode)
-	$(call dc-run-rm, rails console, --$(args))
+	$(call dc-run-rm, bundle exec rails console, --$(args))
 rails-cache-clear: ## Runs rails command and cleans rails cache
-	$(call dc-run-rm, rails r 'Rails.cache.clear')
+	$(call dc-run-rm, bundle exec rails r 'Rails.cache.clear')
 rake: ## Runs rake task (with arguments, default: --tasks)
-	$(call dc-run-rm, rake, $(if $(args),$(args),--tasks))
+	$(call dc-run-rm, bundle exec rake, $(if $(args),$(args),--tasks))
 tmp-clear: ## Clear all files from tmp
-	$(call dc-run-rm, rails tmp:clear)
+	$(call dc-run-rm, bundle exec rails tmp:clear)
 
 # Database
 db-prepare: ## Prepares the database: create, seed and migrate
-	$(call dc-run-rm, rails db:prepare)
+	$(call dc-run-rm, bundle exec rails db:prepare)
 db-create: ## Creates the dev and test database
-	$(call dc-run-rm, rails db:create)
+	$(call dc-run-rm, bundle exec rails db:create)
 db-migrate: ## Runs the migrations for dev database
-	$(call dc-run-rm, rails db:migrate)
+	$(call dc-run-rm, bundle exec db:migrate)
 
 # logs
 logs: ## Displays logs of all services or service given via argument
 	$(call dc, logs -tf --tail=20, $(args))
 logs-clear: ## Truncates all *.log files in log/ to zero bytes
-	$(call dc-run-rm, rails log:clear)
+	$(call dc-run-rm, bundle exec rails log:clear)
 
 # Tests
 .PHONY: test
 test: ## Runs all tests or tests given via argument
-	$(call dc-run-test, rails test, $(args))
+	$(call dc-run-test, bundle exec rails test, $(args))
 test-coverage: ## Runs all tests with coverage
-	$(call dc-run-test, rails test COVERAGE=true)
+	$(call dc-run-test, bundle exec rails test COVERAGE=true)
